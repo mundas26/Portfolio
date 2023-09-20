@@ -1,0 +1,178 @@
+/*========== GOOGLE FONTS ==========*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+/*==================== Dark Light Button Implementation ====================*/
+
+.logo {
+
+
+}
+.dark-mode{
+    background-color: #111;
+    color: #ecf0f1;
+}
+.dark-mode .nav-link{
+        color: #ecf0f1;
+}
+.dark-mode .navbar-brand {
+    color: #ecf0f1;
+}
+.checkbox {
+    display: none;
+}
+.switch {
+    background-color: #fff;
+    border-radius: 50px;
+    border: .1px solid #000000 ;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 27px;
+    width: 50px;
+    /* Scale the size to your need */
+    transform: scale(0.7);
+}
+.dark-mode .switch{
+    background-color: #fff;
+}
+.switch .ball {
+    background-color: #111;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 22px;
+    width: 22px;
+    transform: translateX(0px);
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .switch .ball {
+    transform: translateX(24px);
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.social .media {
+    border: none;
+}
+
+    .social .media:focus {
+        border: none;
+        box-shadow: none;
+    }
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    border: none !important;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+#nav-icon {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    border: none !important;
+}
+
+    #nav-icon span {
+        display: block;
+        position: absolute;
+        height: 6px;
+        width: 100%;
+        background: #4b4b4b;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .25s ease-in-out;
+        -moz-transition: .25s ease-in-out;
+        -o-transition: .25s ease-in-out;
+        transition: .25s ease-in-out;
+        border: none !important;
+    }
+
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0;
+}
+
+#nav-icon span:nth-child(1) {
+    top: 1px;
+}
+
+#nav-icon span:nth-child(2), #nav-icon span:nth-child(3) {
+    top: 9px;
+}
+
+#nav-icon span:nth-child(4) {
+    top: 17px;
+}
+
+#nav-icon.open span:nth-child(1) {
+    top: 13px;
+    width: 0%;
+    left: 50%;
+}
+
+#nav-icon.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#nav-icon.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#nav-icon.open span:nth-child(4) {
+    top: 13px;
+    width: 0%;
+    left: 50%;
+}

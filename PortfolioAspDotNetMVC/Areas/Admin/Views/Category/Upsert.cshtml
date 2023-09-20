@@ -1,0 +1,47 @@
+﻿@model Category
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-success ml-0">
+        <div class="row">
+            <div class="col-12 text-center p-2">
+                <h2 class="text-white py-0">@(Model.Id != 0 ? "Update" : "Create") Category</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row ">
+            <form method="post" class="row">
+                <div class="border p-3">
+                    <div class="form-floating mb-3 col-12">
+                        <input asp-for="Name" class="form-control" autocomplete="off" placeholder="name@example.com">
+                        <label asp-for="Name" class="ms-2 text-muted"></label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            @if (Model.Id != 0)
+                            {
+                                <button type="submit" class="btn btn-primary form-control">Update</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            }
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary border form-control">
+                                Back to list
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{
+        <partial name="_validationscriptspartial" />
+    }
+}
