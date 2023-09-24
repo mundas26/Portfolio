@@ -17,7 +17,7 @@ namespace Portfolio.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0-rc.1.23419.6")
+                .HasAnnotation("ProductVersion", "8.0.0-preview.7.23375.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -245,13 +245,39 @@ namespace Portfolio.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "ASP.NET MVC"
-                        });
+            modelBuilder.Entity("Portfolio.Models.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("Portfolio.Models.ApplicationUser", b =>
@@ -261,8 +287,9 @@ namespace Portfolio.DataAccess.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
@@ -325,6 +352,17 @@ namespace Portfolio.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Portfolio.Models.Project", b =>
+                {
+                    b.HasOne("Portfolio.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

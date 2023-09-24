@@ -6,9 +6,8 @@ body {
 }
 /*==================== Dark Light Button Implementation ====================*/
 
-.logo {
-
-
+#logout {
+    text-align: center;
 }
 .dark-mode{
     background-color: #111;

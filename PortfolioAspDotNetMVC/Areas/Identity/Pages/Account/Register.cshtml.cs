@@ -2,9 +2,6 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -13,20 +10,25 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.CodeAnalysis.Elfie.Extensions;
+using Portfolio.DataAccess.Repository.IRepository;
+using Portfolio.Models;
 using Portfolio.Utility;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace PortfolioAspDotNetMVC.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly RoleManager<IdentityRole> _RoleManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IUserStore<IdentityUser> _userStore;
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -34,15 +36,17 @@ namespace PortfolioAspDotNetMVC.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
-            _RoleManager = roleManager;
+            _roleManager = roleManager;
             _userStore = userStore;
             _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _unitOfWork = unitOfWork;
         }
 
         /// <summary>
@@ -97,18 +101,25 @@ namespace PortfolioAspDotNetMVC.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
-            public string? Role { get; set; }
+            public string Role { get; set; }
             [ValidateNever]
             public IEnumerable<SelectListItem> RoleList { get; set; }
+            [Required]
+            public string Name { get; set; }
+            public string? StreetAddress { get; set; }
+            public string? City { get; set; }
+            public string? State { get; set; }
+            public string? PostalCode { get; set; }
+            public string? PhoneNumber { get; set; }
         }
-
         public async Task OnGetAsync(string returnUrl = null)
         {
-            if (!_RoleManager.RoleExistsAsync(SD.Role_Customer).GetAwaiter().GetResult())
+            Input = new()
             {
-                _RoleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).GetAwaiter().GetResult();
-                _RoleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
-            }
+                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i =>
+                new SelectListItem { Text = i, Value = i })
+            };
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -123,12 +134,26 @@ namespace PortfolioAspDotNetMVC.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+                user.Name = Input.Name;
+                user.StreetAddress = Input.StreetAddress;
+                user.State = Input.State;
+                user.City = Input.City;
+                user.PostalCode = Input.PostalCode;
+                user.PhoneNumber = Input.PhoneNumber;
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
+                    if (!string.IsNullOrEmpty(Input.Role))
+                    {
+                        await _userManager.AddToRoleAsync(user, Input.Role);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.Role_Admin);
+                    }
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -147,7 +172,14 @@ namespace PortfolioAspDotNetMVC.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        if (User.IsInRole(SD.Role_Admin))
+                        {
+                            TempData["success"] = "New User created successfully";
+                        }
+                        else
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        }
                         return LocalRedirect(returnUrl);
                     }
                 }
@@ -161,11 +193,11 @@ namespace PortfolioAspDotNetMVC.Areas.Identity.Pages.Account
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private ApplicationUser CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<ApplicationUser>();
             }
             catch
             {
@@ -174,7 +206,6 @@ namespace PortfolioAspDotNetMVC.Areas.Identity.Pages.Account
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
-
         private IUserEmailStore<IdentityUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)

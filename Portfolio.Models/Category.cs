@@ -10,6 +10,6 @@ namespace Portfolio.Models
         [Required]
         [DisplayName("Category Name")]
         [MaxLength(30)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
     }
 }

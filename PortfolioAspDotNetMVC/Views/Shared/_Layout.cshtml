@@ -1,6 +1,4 @@
-﻿@using Portfolio.Utility;
-
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +16,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm ms-auto">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
             <div class="container d-lg-inline-flex justify-content-end">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img class="logo" style="height: 60px; width: 60px;" src="~/images/LOGO WHITE.png" />Mundas26
@@ -40,13 +38,14 @@
                     <span></span>
                     <span></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-lg-inline-block justify-content-between">
-                    <ul class="navbar-nav me-auto text-uppercase">
+                    <ul class="navbar-nav text-uppercase ms-auto">
                         <li class="nav-item text-center">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Projects</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Project" asp-action="Index">Projects</a>
                         </li>
                         <li class="nav-item text-center">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Videos</a>
@@ -63,14 +62,19 @@
                         @if (User.IsInRole(SD.Role_Admin))
                         {
                             <li class="nav-item dropdown text-center">
-                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
-                                <div class="dropdown-menu text-center">
-                                    <a class="nav-link" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
+                                <a class="nav-link dropdown-toggle" style="color: inherit;" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage</a>
+                                <div class="dropdown-menu">
+                                    <a class="nav-link dropdown-item-text text-center" style="color: inherit" asp-area="Admin" asp-controller="Category" asp-action="Index">Add Category</a>
+                                    <a class="nav-link dropdown-item-text text-center" style="color: inherit" asp-area="Admin" asp-controller="Project" asp-action="Index">Add Project</a>
+                                    <a class="nav-link dropdown-item-text text-center" style="color: inherit" asp-area="Admin" asp-controller="" asp-action="Index">Add Video</a>
                                 </div>
                             </li>
                         }
                     </ul>
-                    <partial name="_LoginPartial"/>
+                    @if (User.IsInRole(SD.Role_Admin))
+                    {
+                        <partial name="_LoginPartial" />
+                    }
                 </div>
             </div>
         </nav>
@@ -86,7 +90,6 @@
             &copy; 2023 - Made with <i class="bi bi-heart-fill"></i> by: Mundas26
         </div>
     </footer>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" asp-append-version="true"></script>

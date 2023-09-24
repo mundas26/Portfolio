@@ -3,6 +3,7 @@
     public interface IUnitOfWork 
     {
         ICategoryRepository Category { get; }
+        IProjectRepository Project { get; }
         void Save();
     }
 }
