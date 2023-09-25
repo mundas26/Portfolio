@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Project>
+
+<div class="container">
+    <h4 class="text-start mt-5">PROJECTS ACCOMPLISHMENT LIST</h4>
+    <div class="row pb-3">
+        @foreach (var project in Model)
+        {
+            <div class="col-lg-3 col-sm-6">
+                <div class="row p-2">
+                    <div class="col-12 p-1">
+                        <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                            @if (project.ProjectImages != null && project.ProjectImages.Count > 0)
+                            {
+                                <div id="carouselExampleIndicators" class="carousel  slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        @foreach (var imageWithIndex in
+                                       project.ProjectImages.Select((image, index) => new { Image = image, Index = index }))
+                                        {
+                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@imageWithIndex.Index"
+                                                    class="@(imageWithIndex.Index==0?"active":"")" aria-current="true" aria-label="Slide 1"></button>
+                                        }
+
+                                    </div>
+                                    <div class="carousel-inner">
+                                        @foreach (var imageWithIndex in
+                                       project.ProjectImages.Select((image, index) => new { Image = image, Index = index }))
+                                        {
+                                            <div class="@(imageWithIndex.Index==0?"carousel-item active":"carousel-item")">
+                                                <img src="@imageWithIndex.Image.ImageUrl" class="d-block w-100" alt="...">
+                                            </div>
+                                        }
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+
+                            }
+                            <div class="card-body pb-0">
+                                <div class="pl-1">
+                                    <p class="card-title h2 text-center">@project.Title</p>
+                                    <p class="card-title h6 text-dark text-muted opacity-75" style="text-align: justify;">@project.Description</p>
+                                    <p class="card-title text-warning text-center pt-3"><b>@project.Category.Name</b></p>
+                                </div>
+                            </div>
+                            <div class="d-inline-flex gap-2">
+                                <a asp-action="Details" asp-route-productId="@project.Id" class="btn btn-success bg-gradient border-0 form-control">
+                                    WATCH
+                                </a>
+                                <a asp-action="Details" asp-route-productId="@project.Id" class="btn btn-primary bg-gradient border-0 form-control">
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -13,9 +13,6 @@ namespace Portfolio.Models
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
-        [ValidateNever]
-        [DisplayName("Image")]
-        public string ImageUrl { get; set; }
         [Required]
         [DisplayName("Date Created")]
         public DateTime DateCreated{ get; set; }
@@ -23,6 +20,8 @@ namespace Portfolio.Models
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         [ValidateNever]
-        public Category Category{ get; set;} 
+        public Category Category{ get; set;}
+        [ValidateNever]
+        public List<ProjectImage> ProjectImages { get; set; }
     }
 }

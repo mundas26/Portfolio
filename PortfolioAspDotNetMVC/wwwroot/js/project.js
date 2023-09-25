@@ -6,7 +6,7 @@ function loadDataTable() {
     dataTable = $('#tblData').DataTable({
         "ajax": { url:'/admin/project/getall'},
         "columns": [
-            { data: 'imageUrl', "render": function (data) { return '<img src="' + data + '" alt="' + data + '"height="300px" width="300px"/>'; }},
+            /*{ data: 'imageUrl', "render": function (data) { return '<img src="' + data + '" alt="' + data + '"height="50px" width="50px"/>'; }},*/
             { data: 'title', "width": "15%" },
             { data: 'description', "width": "10%" },
             { data: 'dateCreated', "width": "15%" },

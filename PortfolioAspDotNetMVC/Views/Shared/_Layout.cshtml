@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mundas26 | Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.ico" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/PortfolioAspDotNetMVC.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
@@ -21,7 +22,6 @@
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <img class="logo" style="height: 60px; width: 60px;" src="~/images/LOGO WHITE.png" />Mundas26
                 </a>
-
                 <div class="switch-container ms-auto">
                     <input type="checkbox" class="checkbox" id="toggleBtn" />
                     <label class="switch" for="toggleBtn">
@@ -42,22 +42,22 @@
                 <div class="navbar-collapse collapse d-lg-inline-block justify-content-between">
                     <ul class="navbar-nav text-uppercase ms-auto">
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Project" asp-action="Index">Projects</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Project">Projects</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Videos</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Videos" asp-action="Privacy">Videos</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Education</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Education" asp-action="Privacy">Education</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Skills</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Skills" asp-action="Privacy">Skills</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Experiences</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Experiences" asp-action="Privacy">Experiences</a>
                         </li>
                         @if (User.IsInRole(SD.Role_Admin))
                         {

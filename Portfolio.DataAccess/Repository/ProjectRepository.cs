@@ -19,7 +19,15 @@ namespace Portfolio.DataAccess.Repository
 
         public void Update(Project obj)
         {
-            _db.Projects.Update(obj);
+            var objFromDb = _db.Projects.FirstOrDefault(u => u.Id == obj.Id);
+            if (objFromDb != null) 
+            {
+                objFromDb.Title = obj.Title;
+                objFromDb.Description = obj.Description;
+                objFromDb.DateCreated = obj.DateCreated;
+                objFromDb.CategoryId = obj.CategoryId;
+                objFromDb.ProjectImages = obj.ProjectImages;
+            }
         }
     }
 }
