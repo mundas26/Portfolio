@@ -27,6 +27,8 @@ namespace Portfolio.DataAccess.Repository
                 objFromDb.DateCreated = obj.DateCreated;
                 objFromDb.CategoryId = obj.CategoryId;
                 objFromDb.ProjectImages = obj.ProjectImages;
+                objFromDb.YoutubeLink = obj.YoutubeLink;
+                objFromDb.WebsiteLink = obj.WebsiteLink;
             }
         }
     }

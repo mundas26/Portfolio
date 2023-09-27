@@ -39,7 +39,6 @@
                                         <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
-
                             }
                             <div class="card-body pb-0">
                                 <div class="pl-1">
@@ -49,11 +48,11 @@
                                 </div>
                             </div>
                             <div class="d-inline-flex gap-2">
-                                <a asp-action="Details" asp-route-productId="@project.Id" class="btn btn-success bg-gradient border-0 form-control">
-                                    WATCH
+                                <a href="@project.YoutubeLink" class="btn btn-danger bg-gradient border-0 form-control">
+                                    <i class="fab fa-youtube"></i> WATCH
                                 </a>
-                                <a asp-action="Details" asp-route-productId="@project.Id" class="btn btn-primary bg-gradient border-0 form-control">
-                                    Details
+                                <a href="@project.WebsiteLink" class="btn btn-success bg-gradient border-0 form-control" target="_blank">
+                                    PREVIEW
                                 </a>
                             </div>
                         </div>

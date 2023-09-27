@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
 using Portfolio.Models.ViewModel;
@@ -29,6 +31,7 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
 
         public IActionResult Upsert(int? id)
         {
+
             ProjectVM productVM = new()
             {
                 CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
@@ -49,11 +52,14 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
                 productVM.Project = _unitOfWork.Project.Get(u => u.Id == id, includeProperties: "ProjectImages");
                 return View(productVM);
             }
-
         }
         [HttpPost]
         public IActionResult Upsert(ProjectVM projectVM, List<IFormFile> files)
         {
+            if (projectVM.Project.CategoryId == null || projectVM.Project.CategoryId == 0)
+            {
+                ModelState.AddModelError("Project.CategoryId", "Please select a category.");
+            }
             if (ModelState.IsValid)
             {
                 if (projectVM.Project.Id == 0)
@@ -64,9 +70,7 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
                 {
                     _unitOfWork.Project.Update(projectVM.Project);
                 }
-
                 _unitOfWork.Save();
-
 
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
                 if (files != null)
@@ -95,18 +99,10 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
                             projectVM.Project.ProjectImages = new List<ProjectImage>();
 
                         projectVM.Project.ProjectImages.Add(projectImage);
-
                     }
-
                     _unitOfWork.Project.Update(projectVM.Project);
                     _unitOfWork.Save();
-
-
-
-
                 }
-
-
                 TempData["success"] = "Project created/updated successfully";
                 return RedirectToAction("Index");
             }
@@ -120,7 +116,6 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
                 return View(projectVM);
             }
         }
-
 
         public IActionResult DeleteImage(int imageId)
         {
@@ -145,7 +140,6 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
 
                 TempData["success"] = "Deleted successfully";
             }
-
             return RedirectToAction(nameof(Upsert), new { id = projectId });
         }
 
@@ -157,7 +151,6 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
             List<Project> objProjectList = _unitOfWork.Project.GetAll(includeProperties: "Category").ToList();
             return Json(new { data = objProjectList });
         }
-
 
         [HttpDelete]
         public IActionResult Delete(int? id)
@@ -181,8 +174,6 @@ namespace PortfolioAspDotNetMVC.Areas.Admin.Controllers
 
                 Directory.Delete(finalPath);
             }
-
-
             _unitOfWork.Project.Remove(projectToBeDeleted);
             _unitOfWork.Save();
 
