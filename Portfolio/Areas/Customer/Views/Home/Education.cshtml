@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Portfolio.Models.Education>
+
+<div class="container">
+    <div class="row pt-4">
+        <h3 class="">
+            EDUCATION
+        </h3>
+        <p>These form contains all of my leanings related in IT fields </p>
+    </div>
+    <div class="pt-4">
+        @foreach (var education in Model)
+        {
+            <div class="row pl-2">
+                <b>School: </b><h6 class="">@education.SchoolName</h6>
+            </div>
+
+            <div class="row pl-2">
+                <b>Course: </b><h6 class="">@education.Course</h6>
+            </div>
+
+            <div class="row pl-2">
+                <b>Address: </b><h6 class="">@education.Address</h6>
+                <hr />
+            </div>
+        }
+        <div class="pt-5">
+            <h3 class="">
+                CERTIFICATION
+            </h3>
+            <p> List of my Certificates</p>
+            <hr />
+            <div class="d-flex">
+            </div>
+        </div>
+    </div>

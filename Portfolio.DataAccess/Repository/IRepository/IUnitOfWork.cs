@@ -5,6 +5,8 @@
         ICategoryRepository Category { get; }
         IProjectRepository Project { get; }
         IProductImagesRepository ProjectImages { get; }
+        ICertificationRepository Certification { get; }
+        IEducationRepository Education { get; }
         void Save();
     }
 }

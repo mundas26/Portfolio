@@ -11,6 +11,8 @@ namespace Portfolio.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Project> Projects{ get; set; }
         public DbSet<ProjectImage> ProjectImages { get; set; }
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<Certification> Certifications { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

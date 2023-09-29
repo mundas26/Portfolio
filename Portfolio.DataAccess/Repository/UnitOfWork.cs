@@ -11,6 +11,10 @@ namespace Portfolio.DataAccess.Repository
 
         public IProductImagesRepository ProjectImages { get; private set; }
 
+        public ICertificationRepository Certification { get; private set; }
+
+        public IEducationRepository Education { get; private set; }
+
         private readonly ApplicationDbContext _db;
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -18,6 +22,8 @@ namespace Portfolio.DataAccess.Repository
             Category = new CategoryRepository(_db);
             Project = new ProjectRepository(_db);
             ProjectImages = new ProjectmagesRepository(_db);
+            Certification = new CertificationRepository(_db);
+            Education = new EducationRepository(_db);
         }
         public void Save()
         {
