@@ -12,7 +12,7 @@ using Portfolio.DataAccess.Data;
 namespace Portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230930023242_InitialDb")]
+    [Migration("20230930040419_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
