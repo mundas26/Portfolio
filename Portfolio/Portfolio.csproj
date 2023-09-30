@@ -11,6 +11,10 @@
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
     <Optimize>False</Optimize>
   </PropertyGroup>
+  
+  <PropertyGroup>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
