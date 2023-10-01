@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
+using Portfolio.Models.ViewModel;
 using Portfolio.Utility;
 
 namespace Portfolio.Areas.Admin.Controllers
@@ -18,8 +19,8 @@ namespace Portfolio.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Education> objEducationList = _unitOfWork.Education.GetAll(includeProperties: "Certification").ToList();
-            return View(objEducationList);
+            List<Education> educationsList = _unitOfWork.Education.GetAll(includeProperties: "Certification").ToList();
+            return View(educationsList);
         }
         public IActionResult Upsert(int? id)
         {
@@ -61,20 +62,20 @@ namespace Portfolio.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             List<Education> objEducationList = _unitOfWork.Education.GetAll().ToList();
-            return Json(new { data = objEducationList});
+            return Json(new { data = objEducationList });
         }
 
         [HttpDelete]
-        public IActionResult Delete(int? id) 
+        public IActionResult Delete(int? id)
         {
             var educationToBeDeleted = _unitOfWork.Education.Get(u => u.Id == id);
             if (educationToBeDeleted == null)
             {
-                return Json(new { success = false, message = "Error while deleting..."});
+                return Json(new { success = false, message = "Error while deleting..." });
             }
             _unitOfWork.Education.Remove(educationToBeDeleted);
             _unitOfWork.Save();
-            return Json(new {success = true, message = "Education deleted successfully!" });
+            return Json(new { success = true, message = "Education deleted successfully!" });
         }
         #endregion 
 

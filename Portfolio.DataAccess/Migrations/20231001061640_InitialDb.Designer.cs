@@ -12,7 +12,7 @@ using Portfolio.DataAccess.Data;
 namespace Portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230930040419_InitialDb")]
+    [Migration("20231001061640_InitialDb")]
     partial class InitialDb
     {
         /// <inheritdoc />
@@ -261,11 +261,16 @@ namespace Portfolio.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("EducationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EducationId");
 
                     b.ToTable("Certifications");
                 });
@@ -426,6 +431,13 @@ namespace Portfolio.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Portfolio.Models.Certification", b =>
+                {
+                    b.HasOne("Portfolio.Models.Education", null)
+                        .WithMany("Certifications")
+                        .HasForeignKey("EducationId");
+                });
+
             modelBuilder.Entity("Portfolio.Models.Project", b =>
                 {
                     b.HasOne("Portfolio.Models.Category", "Category")
@@ -446,6 +458,11 @@ namespace Portfolio.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Portfolio.Models.Education", b =>
+                {
+                    b.Navigation("Certifications");
                 });
 
             modelBuilder.Entity("Portfolio.Models.Project", b =>

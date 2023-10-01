@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
+using Portfolio.Models.ViewModel;
 using System.Diagnostics;
 
 namespace Portfolio.Areas.Customer.Controllers
@@ -27,8 +28,11 @@ namespace Portfolio.Areas.Customer.Controllers
         }
         public IActionResult Education()
         {
-            IEnumerable<Education> educationList = _unitOfWork.Education.GetAll().ToList();
-            return View(educationList);
+            List<Education> educationList = _unitOfWork.Education.GetAll(includeProperties: "Certifications").ToList();
+            EducationVM educationVM = new();
+            educationVM.EducationsList = educationList;
+
+            return View(educationVM);
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

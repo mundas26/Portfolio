@@ -70,20 +70,6 @@ namespace Portfolio.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Certifications",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CertificationImage = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Certifications", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Educations",
                 columns: table => new
                 {
@@ -229,6 +215,26 @@ namespace Portfolio.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Certifications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CertificationImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EducationId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Certifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Certifications_Educations_EducationId",
+                        column: x => x.EducationId,
+                        principalTable: "Educations",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ProjectImages",
                 columns: table => new
                 {
@@ -288,6 +294,11 @@ namespace Portfolio.DataAccess.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Certifications_EducationId",
+                table: "Certifications",
+                column: "EducationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ProjectImages_ProjectId",
                 table: "ProjectImages",
                 column: "ProjectId");
@@ -320,9 +331,6 @@ namespace Portfolio.DataAccess.Migrations
                 name: "Certifications");
 
             migrationBuilder.DropTable(
-                name: "Educations");
-
-            migrationBuilder.DropTable(
                 name: "ProjectImages");
 
             migrationBuilder.DropTable(
@@ -330,6 +338,9 @@ namespace Portfolio.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Educations");
 
             migrationBuilder.DropTable(
                 name: "Projects");

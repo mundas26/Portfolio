@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Portfolio.Models.Education>
+﻿@model EducationVM
 
 <div class="container">
     <div class="row pt-4">
@@ -8,28 +8,38 @@
         <p>These form contains all of my leanings related in IT fields </p>
     </div>
     <div class="pt-4">
-        @foreach (var education in Model)
+        @foreach (var item in Model.EducationsList)
         {
             <div class="row pl-2">
-                <b>School: </b><h6 class="">@education.SchoolName</h6>
+                <b>School: </b><h6 class="">@item.SchoolName</h6>
             </div>
 
             <div class="row pl-2">
-                <b>Course: </b><h6 class="">@education.Course</h6>
+                <b>Course: </b><h6 class="">@item.Course</h6>
             </div>
 
             <div class="row pl-2">
-                <b>Address: </b><h6 class="">@education.Address</h6>
+                <b>Address: </b><h6 class="">@item.Address</h6>
                 <hr />
             </div>
         }
         <div class="pt-5">
-            <h3 class="">
-                CERTIFICATION
-            </h3>
+            <h3 class="">CERTIFICATION</h3>
             <p> List of my Certificates</p>
             <hr />
-            <div class="d-flex">
-            </div>
+            @if (Model != null && Model.Certification != null)
+            {
+
+                <div class="d-flex">
+                    <div class="">
+                        <b>Certification: </b><h6 class="">@Model.Certification.Title</h6>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>No certification information available.</p>
+            }
         </div>
     </div>
+</div>

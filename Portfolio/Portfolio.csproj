@@ -41,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\certification\" />
     <Folder Include="wwwroot\images\projects\" />
     <Folder Include="wwwroot\images\project\" />
   </ItemGroup>

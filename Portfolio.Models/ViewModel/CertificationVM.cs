@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Portfolio.Models.ViewModel
 {
-    public class EducationVM
+    public class CertificationVM
     {
-        public IEnumerable<Education> EducationsList { get; set; }
-        public Certification Certification { get; set; }
+        public Certification Certification{ get; set; }
     }
 }
