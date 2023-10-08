@@ -21,7 +21,5 @@ namespace Portfolio.Models
         public string Course { get; set; }
         [Required]
         public string Address { get; set; }
-        [ValidateNever]
-        public List<Certification> Certifications  { get; set; }
     }
 }

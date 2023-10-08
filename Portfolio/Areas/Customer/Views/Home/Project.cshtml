@@ -42,7 +42,9 @@
                             <div class="card-body pb-0">
                                 <div class="pl-1">
                                     <p class="card-title h2 text-center">@project.Title</p>
-                                    <p class="card-title h6 text-dark text-muted opacity-75" style="text-align: justify;">@project.Description</p>
+                                    <div class="description-limit" style="max-height: 3.9em; overflow: hidden;">
+                                        <p class="card-title h6 text-dark text-muted opacity-75" style="text-align: justify;">@project.Description</p>
+                                    </div>
                                     <p class="card-title text-warning text-center pt-3"><b>@project.Category.Name</b></p>
                                 </div>
                             </div>

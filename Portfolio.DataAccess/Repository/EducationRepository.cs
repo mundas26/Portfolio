@@ -27,7 +27,6 @@ namespace Portfolio.DataAccess.Repository
                 objfromDb.SchoolName = obj.SchoolName;
                 objfromDb.Course = obj.Course;
                 objfromDb.Address = obj.Address;
-                objfromDb.Certifications = obj.Certifications;
             }
         }
     }

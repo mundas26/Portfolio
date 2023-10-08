@@ -1,11 +1,6 @@
 ﻿using Portfolio.DataAccess.Data;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Portfolio.DataAccess.Repository
 {
@@ -19,16 +14,16 @@ namespace Portfolio.DataAccess.Repository
 
         public void Update(Project obj)
         {
-            var objFromDb = _db.Projects.FirstOrDefault(u => u.Id == obj.Id);
-            if (objFromDb != null) 
+            var objfromDb = _db.Projects.FirstOrDefault(u => u.Id == obj.Id);
+            if (objfromDb != null)
             {
-                objFromDb.Title = obj.Title;
-                objFromDb.Description = obj.Description;
-                objFromDb.DateCreated = obj.DateCreated;
-                objFromDb.CategoryId = obj.CategoryId;
-                objFromDb.ProjectImages = obj.ProjectImages;
-                objFromDb.YoutubeLink = obj.YoutubeLink;
-                objFromDb.WebsiteLink = obj.WebsiteLink;
+                objfromDb.Title = obj.Title;
+                objfromDb.Description = obj.Description;
+                objfromDb.DateCreated = obj.DateCreated;
+                objfromDb.Category = obj.Category;
+                objfromDb.ProjectImages = obj.ProjectImages;
+                objfromDb.YoutubeLink = obj.YoutubeLink;
+                objfromDb.WebsiteLink = obj.WebsiteLink;
             }
         }
     }

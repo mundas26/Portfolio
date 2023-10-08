@@ -5,6 +5,6 @@ namespace Portfolio.Models.ViewModel
 {
     public class CertificationVM
     {
-        public Certification Certification{ get; set; }
+        public Certification Certification { get; set; }
     }
 }

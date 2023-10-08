@@ -43,6 +43,10 @@ namespace Portfolio.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Upsert(CertificationVM certificationVM, IFormFile? file)
         {
+            if (file == null)
+            {
+                ModelState.AddModelError("Certification.CertificationImage", "Please select an image");
+            }
             if (ModelState.IsValid)
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
@@ -59,6 +63,7 @@ namespace Portfolio.Areas.Admin.Controllers
                             System.IO.File.Delete(oldImagePath);
                         }
                     }
+                   
                     using (var fileStream = new FileStream(Path.Combine(certificationPath, fileName), FileMode.Create))
                     {
                         file.CopyTo(fileStream);

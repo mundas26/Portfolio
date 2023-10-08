@@ -1,45 +1,41 @@
-﻿@model EducationVM
+﻿@model EducationCertificationVM
 
 <div class="container">
     <div class="row pt-4">
-        <h3 class="">
-            EDUCATION
-        </h3>
-        <p>These form contains all of my leanings related in IT fields </p>
+        <div class="col-12 fade-in show">
+            <h3>EDUCATION</h3>
+        </div>
     </div>
-    <div class="pt-4">
-        @foreach (var item in Model.EducationsList)
+    <div class="row mt-3">
+        @foreach (var education in Model.Educations)
         {
-            <div class="row pl-2">
-                <b>School: </b><h6 class="">@item.SchoolName</h6>
-            </div>
-
-            <div class="row pl-2">
-                <b>Course: </b><h6 class="">@item.Course</h6>
-            </div>
-
-            <div class="row pl-2">
-                <b>Address: </b><h6 class="">@item.Address</h6>
+            <div class="col-md-6 col-12 fade-in show">
+                <p><strong>School:</strong> @education.SchoolName </p>
+                <p><strong>Course:</strong> @education.Course </p>
+                <p><strong>Address:</strong> @education.Address </p>
                 <hr />
             </div>
         }
-        <div class="pt-5">
-            <h3 class="">CERTIFICATION</h3>
-            <p> List of my Certificates</p>
-            <hr />
-            @if (Model != null && Model.Certification != null)
-            {
-
-                <div class="d-flex">
-                    <div class="">
-                        <b>Certification: </b><h6 class="">@Model.Certification.Title</h6>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <p>No certification information available.</p>
-            }
+    </div>
+    <div class="row pt-4">
+        <div class="col-12 fade-in show">
+            <h3>CERTIFICATIONS</h3>
+            <p>List of my Certificates</p>
         </div>
     </div>
+    <div class="row">
+        @foreach (var certification in Model.Certifications)
+        {
+            <div class="col-md-6 col-6 fade-in show mb-4">
+                <div class="certification-item">
+                    <div class="certification-image">
+                        <img src="@certification.CertificationImage" alt="Certification Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+@section Scripts{
+    <script src="~/js/animation.js"></script>
+}

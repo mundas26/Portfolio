@@ -258,16 +258,11 @@ namespace Portfolio.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("EducationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EducationId");
 
                     b.ToTable("Certifications");
                 });
@@ -305,7 +300,8 @@ namespace Portfolio.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
@@ -428,13 +424,6 @@ namespace Portfolio.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Portfolio.Models.Certification", b =>
-                {
-                    b.HasOne("Portfolio.Models.Education", null)
-                        .WithMany("Certifications")
-                        .HasForeignKey("EducationId");
-                });
-
             modelBuilder.Entity("Portfolio.Models.Project", b =>
                 {
                     b.HasOne("Portfolio.Models.Category", "Category")
@@ -455,11 +444,6 @@ namespace Portfolio.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("Portfolio.Models.Education", b =>
-                {
-                    b.Navigation("Certifications");
                 });
 
             modelBuilder.Entity("Portfolio.Models.Project", b =>

@@ -9,23 +9,28 @@ body {
 #logout {
     text-align: center;
 }
-.dark-mode{
+
+.dark-mode {
     background-color: #111;
     color: #ecf0f1;
 }
-.dark-mode .nav-link{
+
+    .dark-mode .nav-link {
         color: #ecf0f1;
-}
-.dark-mode .navbar-brand {
-    color: #ecf0f1;
-}
+    }
+
+    .dark-mode .navbar-brand {
+        color: #ecf0f1;
+    }
+
 .checkbox {
     display: none;
 }
+
 .switch {
     background-color: #fff;
     border-radius: 50px;
-    border: .1px solid #000000 ;
+    border: .1px solid #000000;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -37,9 +42,11 @@ body {
     /* Scale the size to your need */
     transform: scale(0.7);
 }
-.dark-mode .switch{
+
+.dark-mode .switch {
     background-color: #fff;
 }
+
 .switch .ball {
     background-color: #111;
     border-radius: 50%;
@@ -174,4 +181,15 @@ body {
     top: 13px;
     width: 0%;
     left: 50%;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
 }

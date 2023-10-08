@@ -17,7 +17,11 @@ namespace Portfolio.DataAccess.Repository
             if (objfromDb != null)
             {
                 objfromDb.Title = obj.Title;
-                objfromDb.CertificationImage = obj.CertificationImage;
+                
+                if (obj.CertificationImage != null)
+                {
+                    objfromDb.CertificationImage = obj.CertificationImage;
+                }
             }
         }
     }

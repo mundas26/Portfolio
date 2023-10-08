@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
 using Portfolio.Models.ViewModel;
@@ -19,7 +20,7 @@ namespace Portfolio.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Education> educationsList = _unitOfWork.Education.GetAll(includeProperties: "Certification").ToList();
+            List<Education> educationsList = _unitOfWork.Education.GetAll().ToList();
             return View(educationsList);
         }
         public IActionResult Upsert(int? id)
