@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -42,7 +41,9 @@
                 <div class="navbar-collapse collapse d-lg-inline-block justify-content-between">
                     <ul class="navbar-nav text-uppercase ms-auto">
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home
+                            <span class="underline"></span>
+                            </a>
                         </li>
                         <li class="nav-item text-center">
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Project">Projects</a>
@@ -52,9 +53,6 @@
                         </li>
                         <li class="nav-item text-center">
                             <a class="nav-link" asp-area="Customer" asp-controller="Skills" asp-action="Privacy">Skills</a>
-                        </li>
-                        <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Experiences" asp-action="Privacy">Experiences</a>
                         </li>
                         @if (User.IsInRole(SD.Role_Admin))
                         {
@@ -96,6 +94,7 @@
     <script src="~/js/hambuger.js" asp-append-version="true"></script>
     <script src="~/js/darkmode.js" asp-append-version="true"></script>
     <script src="~/js/animation.js" asp-append-version="true"></script>
+    <script src="~/js/underline.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

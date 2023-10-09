@@ -1,15 +1,15 @@
 ﻿@model EducationCertificationVM
 
-<div class="container">
-    <div class="row pt-4">
-        <div class="col-12 fade-in show">
+<div class="container fade-in">
+    <div class="row pt-4 slide-in-right">
+        <div class="col-12">
             <h3>EDUCATION</h3>
         </div>
     </div>
-    <div class="row mt-3">
+    <div class="row mt-3 slide-in-left">
         @foreach (var education in Model.Educations)
         {
-            <div class="col-md-6 col-12 fade-in show">
+            <div class="col-12">
                 <p><strong>School:</strong> @education.SchoolName </p>
                 <p><strong>Course:</strong> @education.Course </p>
                 <p><strong>Address:</strong> @education.Address </p>
@@ -18,12 +18,12 @@
         }
     </div>
     <div class="row pt-4">
-        <div class="col-12 fade-in show">
+        <div class="col-12 slide-in-right">
             <h3>CERTIFICATIONS</h3>
             <p>List of my Certificates</p>
         </div>
     </div>
-    <div class="row">
+    <div class="row slide-in-left">
         @foreach (var certification in Model.Certifications)
         {
             <div class="col-md-6 col-6 fade-in show mb-4">

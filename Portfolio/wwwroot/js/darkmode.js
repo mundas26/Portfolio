@@ -1,5 +1,4 @@
-﻿// Get elements
-const themeSwitch = document.getElementById("toggleBtn");
+﻿const themeSwitch = document.getElementById("toggleBtn");
 const body = document.body;
 
 // Function to set the theme mode in localStorage
