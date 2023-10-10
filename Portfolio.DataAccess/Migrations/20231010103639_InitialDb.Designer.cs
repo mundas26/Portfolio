@@ -12,8 +12,8 @@ using Portfolio.DataAccess.Data;
 namespace Portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231007193530_UpdateDatabase")]
-    partial class UpdateDatabase
+    [Migration("20231010103639_InitialDb")]
+    partial class InitialDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
