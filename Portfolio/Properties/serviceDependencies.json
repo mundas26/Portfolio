@@ -2,12 +2,16 @@
   "dependencies": {
     "mssql1": {
       "ignored": "true",
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:DefaultConnectionString"
+      "type": "mssql"
     },
     "mssql2": {
+      "ignored": "true",
       "type": "mssql",
       "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "sqlite1": {
+      "ignored": "true",
+      "type": "sqlite"
     }
   }
 }

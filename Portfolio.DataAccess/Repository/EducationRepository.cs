@@ -1,13 +1,6 @@
 ﻿using Portfolio.DataAccess.Data;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
-using SQLitePCL;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Portfolio.DataAccess.Repository
 {
