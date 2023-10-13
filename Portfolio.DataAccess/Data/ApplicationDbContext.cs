@@ -13,6 +13,7 @@ namespace Portfolio.DataAccess.Data
         public DbSet<ProjectImage> ProjectImages { get; set; }
         public DbSet<Education> Educations { get; set; }
         public DbSet<Certification> Certifications { get; set; }
+        public DbSet<Skill> Skills{ get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {

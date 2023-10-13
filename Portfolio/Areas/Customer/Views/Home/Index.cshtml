@@ -1,4 +1,6 @@
-﻿<div class="container-fluid slide-in-left">
+﻿@model Experience
+
+<div class="container-fluid slide-in-left">
     <div class="col-10">
     <h1 class="mt-5 pt-2"><strong>C# .NET <br>DEVELOPER</strong></h1>
     <h5 class="mt-4">Hi! I'm Juniel M. Mundas a passionate software developer from the Philippines</h5>
@@ -14,13 +16,23 @@
         <img class="w-50 user-select-none" src="~/images/Mundas, Juniel  M-102135.png">
     </div>
     <div class="">
-        <h4 class="pt-0">Experience |</h4>
+        <h4 class="pt-0">
+            Experience |<h2>Your Programming Experience</h2>
+            <p>Years: <span id="years">@Model.Years</span></p>
+            <p>Months: <span id="months">@Model.Months</span></p>
+            <p>Days: <span id="days">@Model.Days</span></p>
+            <p>Hours: <span id="hours">@Model.Hours</span></p>
+            <p>Minutes: <span id="minutes">@Model.Minutes</span></p>
+            <p>Seconds: <span id="seconds">@Model.Seconds</span></p>
+        </h4>
         <p class="pt-2 user-select-none" style="text-align: justify; text-indent: 50px;">
             Welcome to my website! Here, you'll find a comprehensive overview of my work progress and the journey of self-improvement I've undertaken. My goal is to inspire fellow programmers by sharing valuable insights and ideas to empower them in their program development endeavors.
             Feel free to explore my website anytime; it's a resource open to all. Thank you for visiting, and I wish you endless success in your coding endeavors!
         </p>
         <h6 class="pt-0 pt-4 user-select-none">Contact number: <a href="tel:+639353376348" class="text-decoration-none user-select-none">+639 353 376 348</a></h6>
         <h6 class="pt-0 user-select-none">Email: <a href="mailto:junielmundas26@gmail.com" class="text-decoration-none user-select-none">junielmundas26@gmail.com</a></h6>
-
     </div>
 </div>
+@section Scripts{
+    <script src="~/js/realtime.js"></script>
+}

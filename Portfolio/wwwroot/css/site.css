@@ -278,4 +278,9 @@ body {
     color: #333; /* Text color for active link */
 }
 
+/* Active Style for Navbar Links */
+.image-resize {
+    width: 70px;
+    height: 50px;
+}
 

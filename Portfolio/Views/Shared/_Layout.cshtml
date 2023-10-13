@@ -41,9 +41,7 @@
                 <div class="navbar-collapse collapse d-lg-inline-block justify-content-between">
                     <ul class="navbar-nav text-uppercase ms-auto">
                         <li class="nav-item text-center">
-                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home
-                            <span class="underline"></span>
-                            </a>
+                            <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item text-center">
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Project">Projects</a>
@@ -52,7 +50,7 @@
                             <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Education">Education</a>
                         </li>
                         <li class="nav-item text-center">
-                            <a class="nav-link" asp-area="Customer" asp-controller="Skills" asp-action="Privacy">Skills</a>
+                            <a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Skill">Skills</a>
                         </li>
                         @if (User.IsInRole(SD.Role_Admin))
                         {
@@ -63,6 +61,7 @@
                                     <a class="nav-link dropdown-item-text text-center" style="color: inherit" asp-area="Admin" asp-controller="Project" asp-action="Index">Add Project</a>
                                     <a class="nav-link dropdown-item-text text-center" style="color: inherit" asp-area="Admin" asp-controller="Education" asp-action="Index">Add Education</a>
                                     <a class="nav-link dropdown-item-text text-center" style="color: inherit" asp-area="Admin" asp-controller="Certification" asp-action="Index">Add Certification</a>
+                                    <a class="nav-link dropdown-item-text text-center" style="color: inherit" asp-area="Admin" asp-controller="Skill" asp-action="Index">Add Skills</a>
                                 </div>
                             </li>
                         }

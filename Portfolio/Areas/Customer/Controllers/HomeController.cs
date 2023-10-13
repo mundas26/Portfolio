@@ -1,3 +1,4 @@
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
@@ -11,6 +12,7 @@ namespace Portfolio.Areas.Customer.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
+
         public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
@@ -19,12 +21,39 @@ namespace Portfolio.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var programmingStartDate = new DateTime(2019, 8, 8); // Your programming start date
+            Experience model = new Experience
+            {
+                ProgrammingStartDate = programmingStartDate
+            };
+
+            // Calculate the initial experience
+            model.CalculateTotalExperience();
+
+            return View(model);
+        }
+        public IActionResult UpdateExperience()
+        {
+            var programmingStartDate = new DateTime(2019, 8, 8); // Your programming start date
+            Experience model = new Experience
+            {
+                ProgrammingStartDate = programmingStartDate
+            };
+
+            // Calculate the initial experience
+            model.CalculateTotalExperience();
+
+            return View(model);
         }
         public IActionResult Project()
         {
             IEnumerable<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Category,ProjectImages");
             return View(projectList);
+        }
+        public IActionResult Skill()
+        {
+            IEnumerable<Skill> skillList = _unitOfWork.skill.GetAll();
+            return View(skillList);
         }
         public IActionResult Education()
         {

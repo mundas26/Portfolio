@@ -15,6 +15,8 @@ namespace Portfolio.DataAccess.Repository
 
         public IEducationRepository Education { get; private set; }
 
+        public ISkillRepository skill { get; private set; }
+
         private readonly ApplicationDbContext _db;
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -24,6 +26,7 @@ namespace Portfolio.DataAccess.Repository
             ProjectImages = new ProjectmagesRepository(_db);
             Certification = new CertificationRepository(_db);
             Education = new EducationRepository(_db);
+            skill = new SkillRepository(_db);
         }
         public void Save()
         {

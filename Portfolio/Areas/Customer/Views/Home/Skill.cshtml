@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Skill>
+<div class="container">
+    <div class="row slide-in-left">
+        @foreach (var certification in Model)
+        {
+            <div class="col-md-1 col-3 mb-4 text-center">
+                <div class="skill-item">
+                    <div class="skill-image">
+                        <img src="@certification.StackImage" alt="Certification Image" class="image-resize">
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/animation.js"></script>
+}
