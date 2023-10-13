@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="card-body p-4">
-        <form method="post" class="row" enctype="multipart/form-data">
+        <form asp-controller="Certification" asp-action="Upsert" method="post" enctype="multipart/form-data">
             <input asp-for="Certification.Id" hidden />
             <input asp-for="Certification.CertificationImage" hidden />
             <div class="row">
@@ -19,12 +19,16 @@
                         <div class="form-floating py-2 col-12">
                             <input asp-for="Certification.Title" class="form-control" autocomplete="off" placeholder="name@example.com">
                             <label asp-for="Certification.Title" class="ms-2 text-muted"></label>
-                            <span asp-validation-for="Certification.Title" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
                             <input type="file" name="file" class="form-control border-0 shadow"/>
                             <label asp-for="Certification.CertificationImage" class="ms-2 text-muted"></label>
                             <span asp-validation-for="Certification.CertificationImage" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <input type="file" name="pdfFile" class="form-control border-0 shadow" />
+                            <label asp-for="Certification.PdfDocument" class="ms-2 text-muted"></label>
+                            <span asp-validation-for="Certification.PdfDocument" class="text-danger"></span>
                         </div>
                         <div class="row pt-3">
                             <div class="col-6 col-md-3">

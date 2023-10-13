@@ -5,10 +5,10 @@
     <div class="row pb-3">
         @foreach (var project in Model)
         {
-            <div class="col-lg-3 col-sm-6">
+            <div class="col-lg-3 col-12">
                 <div class="row p-2">
                     <div class="col-12 p-1">
-                        <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                        <div class="card project-card border-0 p-3 shadow border-top border-5 rounded">
                             @if (project.ProjectImages != null && project.ProjectImages.Count > 0)
                             {
                                 <div id="carouselExampleIndicators" class="carousel  slide" data-bs-ride="carousel">
@@ -40,13 +40,13 @@
                                 </div>
                             }
                             <div class="card-body pb-0">
-                                <div class="pl-1">
-                                    <p class="card-title h2 text-center">@project.Title</p>
-                                    <div class="description-limit" style="max-height: 3.9em; overflow: hidden;">
-                                        <p class="card-title h6 text-dark text-muted opacity-75" style="text-align: justify;">@project.Description</p>
+                                    <div class="project-title-container">
+                                        <p class="project-title">@project.Title</p>
+                                    </div>
+                                    <div class="description-container">
+                                        <p class="card-title h6 text-dark text-muted opacity-75" style="text-align: justify; width:auto;">@project.Description</p>
                                     </div>
                                     <p class="card-title text-warning text-center pt-3"><b>@project.Category.Name</b></p>
-                                </div>
                             </div>
                             <div class="d-inline-flex gap-2">
                                 <a href="@project.YoutubeLink" class="btn btn-danger bg-gradient border-0 form-control">

@@ -280,7 +280,44 @@ body {
 
 /* Active Style for Navbar Links */
 .image-resize {
-    width: 70px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
+}
+.hover-image {
+    /* Define the initial state for the image */
+    transform: scale(1);
+    border: none;
+    /* Add a CSS transition with a delay of 0.3 seconds (adjust as needed) */
+    transition: transform 0.3s ease, border 0.3s ease;
 }
 
+    .hover-image:hover {
+        /* Modify the image on hover */
+        transform: scale(1.2); /* Scale the image to 120% on hover */
+        box-shadow: none;
+    }
+
+.project-card {
+    width: 250px;
+    height: 500px;
+}
+
+    .project-card img {
+        min-height: 260px;
+        object-fit: inherit;
+        width: 100%;
+    }
+
+.project-title-container {
+    height: 30px; /* Set a fixed height for the title container */
+    overflow: hidden;
+}
+
+.project-title {
+    text-align: center;
+}
+
+.description-container {
+    height: 80px; /* Set a fixed height for the description container */
+    overflow: auto; /* Enable scrolling for overflowing content */
+}

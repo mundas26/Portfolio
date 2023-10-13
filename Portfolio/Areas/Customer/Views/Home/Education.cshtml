@@ -22,19 +22,41 @@
             <h3>CERTIFICATIONS</h3>
         </div>
     </div>
-    <div class="row slide-in-left">
-        @foreach (var certification in Model.Certifications)
-        {
-            <div class="col-md-6 col-6 fade-in show mb-4">
-                <div class="certification-item">
-                    <div class="certification-image">
-                        <img src="@certification.CertificationImage" alt="Certification Image" class="img-fluid">
-                    </div>
+</div>
+<!-- Add this code inside the "certification" section -->
+<div class="row slide-in-left">
+    @foreach (var certification in Model.Certifications)
+    {
+        <div class="col-md-6 col-6 fade-in show mb-4">
+            <div class="certification-item">
+                <div class="certification-image">
+                    <a href="https://junielmundas.com/@certification.PdfDocument" download="Certification.pdf" class="certification-link">
+                        <img src="@certification.CertificationImage" alt="Certification Image" class="img-fluid hover-image">
+                    </a>
                 </div>
             </div>
-        }
+        </div>
+    }
+</div>
+<!-- Modal Dialog -->
+<div class="modal" id="downloadModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Download PDF</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to download the PDF?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="downloadPdfButton" data-bs-dismiss="modal">Download</button>
+                <button type="button" class="btn btn-primary" id="downloadPdfButton" data-bs-dismiss="modal">Cancel </button>
+            </div>
+        </div>
     </div>
 </div>
-@section Scripts{
+@section Scripts {
     <script src="~/js/animation.js"></script>
+    <script src="~/js/pdfdownload.js"></script>
 }

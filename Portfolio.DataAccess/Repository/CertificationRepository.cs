@@ -17,6 +17,7 @@ namespace Portfolio.DataAccess.Repository
             if (objfromDb != null)
             {
                 objfromDb.Title = obj.Title;
+                objfromDb.PdfDocument = obj.PdfDocument;
                 
                 if (obj.CertificationImage != null)
                 {

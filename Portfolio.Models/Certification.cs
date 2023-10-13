@@ -14,5 +14,9 @@ namespace Portfolio.Models
         [DisplayName("Certification Image")]
         [ValidateNever]
         public string CertificationImage { get; set; }
+
+        [DisplayName("Pdf files")]
+        [ValidateNever] 
+        public string PdfDocument { get; set; }
     }
 }

@@ -7,7 +7,8 @@ function loadDataTable() {
         "ajax": { url:'/admin/certification/getall'},
         "columns": [
             /*{ data: 'imageUrl', "render": function (data) { return '<img src="' + data + '" alt="' + data + '"height="50px" width="50px"/>'; }},*/
-            { data: 'title', "width": "50%" },
+            { data: 'title', "width": "25%" },
+            { data: 'pdfdocument', "width": "25%" },
             { data: 'id',"render": function (data) {
                     return `<div class="w-75 btn-group" role="group">
                         <a href= "/admin/certification/upsert?id=${data}" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>

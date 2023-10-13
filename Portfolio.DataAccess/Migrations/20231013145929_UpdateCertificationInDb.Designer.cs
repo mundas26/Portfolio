@@ -12,8 +12,8 @@ using Portfolio.DataAccess.Data;
 namespace Portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231012170741_AddSkillTableInDb")]
-    partial class AddSkillTableInDb
+    [Migration("20231013145929_UpdateCertificationInDb")]
+    partial class UpdateCertificationInDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,6 +258,10 @@ namespace Portfolio.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CertificationImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PdfDocument")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

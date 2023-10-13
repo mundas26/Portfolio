@@ -41,11 +41,15 @@ namespace Portfolio.Areas.Admin.Controllers
             }
         }
         [HttpPost]
-        public IActionResult Upsert(CertificationVM certificationVM, IFormFile? file)
+        public IActionResult Upsert(CertificationVM certificationVM, IFormFile? file, IFormFile? pdfFile)
         {
             if (file == null)
             {
                 ModelState.AddModelError("Certification.CertificationImage", "Please select an image");
+            }
+            if (pdfFile == null)
+            {
+                ModelState.AddModelError("Certification.PdfDocument", "Please select a PDF file");
             }
             if (ModelState.IsValid)
             {
@@ -63,13 +67,25 @@ namespace Portfolio.Areas.Admin.Controllers
                             System.IO.File.Delete(oldImagePath);
                         }
                     }
-                   
+
                     using (var fileStream = new FileStream(Path.Combine(certificationPath, fileName), FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
                     certificationVM.Certification.CertificationImage = @"\images\certification\" + fileName;
                 }
+                string? pdfFileName = null;
+                if (pdfFile != null)
+                {
+                    pdfFileName = Guid.NewGuid().ToString() + Path.GetExtension(pdfFile.FileName);
+                    string pdfPath = Path.Combine(wwwRootPath, @"pdfDocument\certification");
+                    using (var pdfFileStream = new FileStream(Path.Combine(pdfPath, pdfFileName), FileMode.Create))
+                    {
+                        pdfFile.CopyTo(pdfFileStream);
+                    }
+                    certificationVM.Certification.PdfDocument = @"pdfDocument\certification\" + pdfFileName;
+                }
+
                 if (certificationVM.Certification.Id == 0)
                 {
                     _unitOfWork.Certification.Add(certificationVM.Certification);
