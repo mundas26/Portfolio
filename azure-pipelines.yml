@@ -1,4 +1,11 @@
 # ASP.NET Core (.NET Framework)
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(27d92d71-c0e4-4b0b-b772-0a18f2fdd3d0)'
+    appType: 'webApp'
+    WebAppName: 'junielmundas'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
