@@ -9,22 +9,24 @@
     </div>
     <div class="card-body py-4">
         <div class="row pb-2">
-            <div class="col-6"></div>
-            <div class="col-6 text-end">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 text-end">
                 <a asp-controller="Certification" asp-action="Upsert" class="btn btn-primary">
-                    <i class="bi bi-plus-circle"></i> Create New Certification
+                    <i class="bi bi-plus-circle"></i> Create new Certification
                 </a>
             </div>
+            <div class="table-responsive">
+                <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Title</th>
+                            <th class="text-center">pdfDocument</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
-        <table id="tblData" class="table table-bordered table-striped" style="width:100%">
-            <thead> 
-                <tr>
-                    <th class="text-center">TITLE</th>
-                    <th class="text-center">PDF</th>
-                    <th></th>
-                </tr>
-            </thead>
-        </table>
     </div>
 </div>
 @section Scripts{

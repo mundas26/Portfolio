@@ -18,8 +18,10 @@ function loadDataTable() {
                     </div>`
                 },
                  "width": "25%"   
-            }
-        ]
+            },
+        ],
+        "scrollX": true,
+        "responsive": true
     });
 }
 function Delete(url) {
