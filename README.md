@@ -19,7 +19,7 @@ Welcome to my portfolio website! Here, I aim to showcase my projects, skills, an
 - C#
 - HTML/CSS
 - JavaScript
-- Bootrap
+- Bootstrap
 - Ajax
 ## Getting Started
 
@@ -47,7 +47,7 @@ This project is licensed under the [MIT License](LICENSE).
 I'd like to acknowledge the following resources and tools that contributed to this project:
 
 - [Bootstrap]https://getbootstrap.com: For providing the responsive design framework.
-- [Font Awesome](
+- [Font Awesome]
 https://fontawesome.com: For the amazing icons used throughout the website.
 - http://bryanjaybodino.epizy.com: This project drew inspiration from the design and features of the Example Website.
 
@@ -56,4 +56,4 @@ https://fontawesome.com: For the amazing icons used throughout the website.
 - Juniel Migullas Mundas
 - Email: junielmundas26@gmail.com
 - LinkedIn:https://www.linkedin.com/in/mundas26
-- Portfolio:https://www.junielmundas.com
+- Portfolio:https://junielmundas.com
