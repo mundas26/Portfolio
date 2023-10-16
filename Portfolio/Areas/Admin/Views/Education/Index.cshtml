@@ -1,4 +1,4 @@
-﻿<div class="card shadow border-0 mt-4">
+<div class="card shadow border-0 mt-4">
     <div class="card-header bg-success ml-0">
         <div class="row">
             <div class="col-12 p-2">
@@ -7,13 +7,14 @@
         </div>
     </div>
     <div class="card-body py-4">
-        <div class="row">
-            <div class="col-6"></div>
-            <div class="col-6 text-end p-3">
+        <div class="row pb-3">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 text-end p-3">
                 <a asp-controller="Education" asp-action="Upsert" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i> Create new Education list
                 </a>
             </div>
+						<div class="table-responsive">
             <table id="tblData" class="table table-bordered table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -24,6 +25,7 @@
                     </tr>
                 </thead>
             </table>
+						</div>
         </div>
     </div>
 </div>
