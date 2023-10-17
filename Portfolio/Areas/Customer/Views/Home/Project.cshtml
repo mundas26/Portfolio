@@ -8,7 +8,7 @@
             <div class="col-lg-3 col-6">
                 <div class="row p-2">
                     <div class="col-12 p-1">
-                        <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                        <div class="card fixed-card border-0 p-3 shadow border-top border-5 rounded">
                             @if (project.ProjectImages != null && project.ProjectImages.Count > 0)
                             {
                                 <div id="carouselExampleIndicators" class="carousel  slide" data-bs-ride="carousel">
@@ -40,13 +40,9 @@
                                 </div>
                             }
                             <div class="card-body pb-0">
-                                <div class="project-title-container">
-                                    <p class="project-title">@project.Title</p>
-                                </div>
-                                <div class="description-container">
-                                    <p class="card-title h6 text-dark text-muted opacity-75" style="text-align: justify; width:auto;">@project.Description</p>
-                                </div>
-                                <p class="card-title text-warning text-center pt-3"><b>@project.Category.Name</b></p>
+                                <h5 class="card-title text-center">@project.Title</h5>
+                                <p class="card-description h6 text-dark text-muted opacity-75" style="text-align: justify; width:auto;">@project.Description</p>
+                                <p class="card-text text-warning text-center pt-3"><b>@project.Category.Name</b></p>
                             </div>
                             <div class="d-inline-flex gap-2">
                                 <a href="@project.YoutubeLink" class="btn btn-danger bg-gradient border-0 form-control">

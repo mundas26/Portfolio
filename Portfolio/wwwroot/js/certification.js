@@ -8,7 +8,7 @@ function loadDataTable() {
         "columns": [
             //{ data: 'certificationImage', "render": function (data) { return '<img src="' + data + '" alt="' + data + '"height="50px" width="50px"/>'; }},
             { data: 'title', "width": "25%" },
-            {data: 'certification.pdfdocument', "width": "25%"},
+            {data: 'pdfDocument', "width": "25%"},
             { data: 'id',"render": function (data) {
                     return `<div class="w-75 btn-group" role="group">
                         <a href= "/admin/certification/upsert?id=${data}" class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
