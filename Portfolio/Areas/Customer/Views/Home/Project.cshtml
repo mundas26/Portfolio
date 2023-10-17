@@ -45,7 +45,7 @@
                                 <p class="card-text text-warning text-center pt-3"><b>@project.Category.Name</b></p>
                             </div>
                             <div class="d-inline-flex gap-2">
-                                <a href="@project.YoutubeLink" class="btn btn-danger bg-gradient border-0 form-control">
+                                <a asp-action="Details"asp-route-projectId="@project.Id" class="btn btn-danger bg-gradient border-0 form-control">
                                     <i class="fab fa-youtube"></i> WATCH
                                 </a>
                                 <a href="@project.WebsiteLink" class="btn btn-success bg-gradient border-0 form-control" target="_blank">

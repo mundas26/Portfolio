@@ -1,0 +1,21 @@
+﻿@model Project
+
+<div class="container">
+    <div class="row-cols-2">
+        <div class="col-1 col-12">
+            @if (!string.IsNullOrEmpty(@Model.YoutubeLink))
+            {
+                <div class="text-center mt-4 col-12">
+                    <iframe width="100%" height="450" src="@Model.YoutubeLink" frameborder="0" allowfullscreen></iframe>
+                </div>
+            }
+            else
+            {
+                <div class="text-center mt-4 col-12">
+                    <img src="https://placehold.co/600x400" alt="Video Placeholder" width="75%" />
+                    <p class="pt-3">Video is not available at the moment.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

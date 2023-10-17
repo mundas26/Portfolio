@@ -66,6 +66,18 @@ namespace Portfolio.Areas.Customer.Controllers
             };
             return View(educAndCertList);
         }
+        public IActionResult Details(int? projectId)
+        {
+            if (projectId == null || projectId == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                Project project = _unitOfWork.Project.Get(u => u.Id == projectId);
+                return View(project);
+            }
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

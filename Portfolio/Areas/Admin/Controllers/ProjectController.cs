@@ -139,6 +139,18 @@ namespace Portfolio.Areas.Admin.Controllers
             return RedirectToAction(nameof(Upsert), new { id = projectId });
         }
 
+        public IActionResult Details(int? projectId)
+        {
+            if (projectId == null || projectId == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                Project project = _unitOfWork.Project.Get(u => u.Id == projectId);
+                return View(projectId);
+            }
+        }
         #region API CALLS
 
         [HttpGet]
