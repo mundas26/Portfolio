@@ -5,7 +5,7 @@
     <div class="card-header bg-success ml-0 py-3">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2">@(Model.Project.Id != 0? "Update" : "Create") Product</h2>
+                <h2 class="text-white py-2">@(Model.Project.Id != 0 ? "Update" : "Create") Product</h2>
             </div>
         </div>
     </div>
@@ -21,13 +21,14 @@
                             <span asp-validation-for="Project.Title" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <textarea asp-for="Project.Description" class="form-control border-0 shadow"></textarea>
+                            <textarea asp-for="Project.Description" class="form-control border-0 shadow" id="mytextarea"></textarea>
                             <label asp-for="Project.Description" class="ms-2"></label>
                             <span asp-validation-for="Project.Description" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input asp-for="Project.DateCreated" class="form-control border-0 shadow"/>
+                            <input asp-for="Project.DateCreated" class="form-control border-0 shadow" value="@Model.Project.DateCreated.ToString("dd/MM/yyyy HH:mm:ss")" />
                             <label asp-for="Project.DateCreated" class="ms-2"></label>
+                            @* <span>@Html.DisplayFor(model => model.Project.DateCreated)</span> *@
                             <span asp-validation-for="Project.DateCreated" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
@@ -49,7 +50,7 @@
                             <span asp-validation-for="Project.WebsiteLink" class="text-danger"></span>
                         </div>
                         <div class="form-floating py-2 col-12">
-                            <input type="file" name="files" class="form-control border-0 shadow" multiple/>
+                            <input type="file" name="files" class="form-control border-0 shadow" multiple />
                             <label asp-for="Project.ProjectImages" class="ms-2"></label>
                         </div>
                         <div class="row pt-2">
@@ -92,4 +93,10 @@
 </div>
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/tinymce.min.js" asp-append-version="true"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 }

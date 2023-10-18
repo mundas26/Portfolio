@@ -15,11 +15,10 @@ namespace Portfolio.Models
         public string Description { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MMMM-dd-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         [DisplayName("Date Created")]
         public DateTime DateCreated{ get; set; }
         [DisplayName("Category ID")]
-        [Required(ErrorMessage = "Please select a category.")]
         public int? CategoryId { get; set; }
         [ForeignKey("CategoryId")]  
         [ValidateNever]
@@ -28,11 +27,5 @@ namespace Portfolio.Models
         public List<ProjectImage> ProjectImages { get; set; }
         public string? YoutubeLink{ get; set; }
         public string? WebsiteLink{ get; set; }
-
-        public Project()
-        {
-            var formatString = "{0:MMMM-dd-yyyy}";
-            (this.GetType().GetProperty("DateCreated").GetCustomAttributes(typeof(DisplayFormatAttribute), true)[0] as DisplayFormatAttribute).DataFormatString = formatString;
-        }
     }
 }

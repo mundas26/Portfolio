@@ -297,7 +297,7 @@ body {
     box-shadow: none;
 }
 .fixed-card {
-    height: 400px; /* Set the desired fixed height */
+    height: 500px; /* Set the desired fixed height */
 }
 .card-description, .card-title {
     max-height: 50px; /* Set the maximum height for the description */
@@ -306,3 +306,77 @@ body {
 .card-description::-webkit-scrollbar, .card-title::-webkit-scrollbar {
     width: 0; /* Set the width to 0 to hide the scrollbar */
 }
+@media (min-width: 233px) {
+    .fixed-card {
+        height: 320px; /* Set the desired fixed height */
+    }
+
+    .btn {
+        font-size: 10px;
+    }
+}@media (min-width: 272px) {
+    .fixed-card {
+        height: 340px; /* Set the desired fixed height */
+    }
+    .btn {
+        font-size: 15px;
+    }
+}
+@media (min-width: 294px) {
+    .fixed-card {
+        height: 370px; /* Set the desired fixed height */
+    }
+
+    .btn {
+        font-size: 15px;
+    }
+}
+@media (min-width: 367px) {
+    .fixed-card {
+        height: 400px; /* Set the desired fixed height */
+    }
+
+    .btn {
+        font-size: 20px;
+    }
+}@media (min-width: 400px) {
+    .fixed-card {
+        height: 450px; /* Set the desired fixed height */
+    }
+
+    .btn {
+        font-size: 20px;
+    }
+}@media (min-width: 490px) {
+    .fixed-card {
+        height: 500px; /* Set the desired fixed height */
+    }
+
+    .btn {
+        font-size: 20px;
+    }
+}@media (min-width: 768px) {
+    .fixed-card {
+        height: 600px; /* Set the desired fixed height */
+    }
+}
+@media (min-width: 992px) {
+    .fixed-card {
+        height: 350px; /* Set the desired fixed height */
+    }
+    .btn {
+        font-size: 12px;
+    }
+}
+@media (min-width: 1200px) {
+    .fixed-card {
+        height: 400px; /* Set the desired fixed height */
+    }
+}
+/* Apply ellipsis to the description column */
+#tblData td:nth-child(2) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

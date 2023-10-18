@@ -40,6 +40,7 @@ namespace Portfolio.Areas.Admin.Controllers
             if (id == null || id == 0)
             {
                 //create
+                productVM.Project.DateCreated = DateTime.Now;
                 return View(productVM);
             }
             else
@@ -157,7 +158,18 @@ namespace Portfolio.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             List<Project> objProjectList = _unitOfWork.Project.GetAll(includeProperties: "Category").ToList();
-            return Json(new { data = objProjectList });
+            var formattedProjectList = objProjectList.Select(u => new
+            {
+                Id = u.Id,
+                Title = u.Title,
+                Description = u.Description,
+                DateCreated = u.DateCreated.ToString("D"),
+                Category = u.Category,
+                YoutubeLink = u.YoutubeLink,
+                WebsiteLink = u.WebsiteLink,
+                ProjectImages = u.ProjectImages
+            }).ToList();
+            return Json(new { data = formattedProjectList });
         }
 
         [HttpDelete]
