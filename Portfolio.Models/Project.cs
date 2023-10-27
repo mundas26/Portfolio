@@ -14,10 +14,10 @@ namespace Portfolio.Models
         [Required]
         public string Description { get; set; }
         [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.DateTime)] // Change DataType.Date to DataType.DateTime
+        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "dd/MM/yyyy HH:mm:ss")] // Set ApplyFormatInEditMode to false
         [DisplayName("Date Created")]
-        public DateTime DateCreated{ get; set; }
+        public DateTime DateCreated { get; set; }
         [DisplayName("Category ID")]
         public int? CategoryId { get; set; }
         [ForeignKey("CategoryId")]  
