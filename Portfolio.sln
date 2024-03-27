@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Utility", "Portfolio.Utility\Portfolio.Utility.csproj", "{9C10F274-49B0-4A8C-BB3B-82F5A1C1B4C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio", "Portfolio\Portfolio.csproj", "{9AC41515-9B8C-40D5-AD91-6632E2F53359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.App", "Portfolio\Portfolio.App.csproj", "{9AC41515-9B8C-40D5-AD91-6632E2F53359}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

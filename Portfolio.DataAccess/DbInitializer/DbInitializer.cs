@@ -52,7 +52,7 @@ namespace Portfolio.DataAccess.DbInitializer
                     City = "Manila"
                 }, "@Admin123").GetAwaiter().GetResult();
 
-                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "junielmundas26@gmail.com");
+                ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "junielmundas26@gmail.com")!;
                 _userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
             }
             return;
